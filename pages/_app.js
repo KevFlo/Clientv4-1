@@ -9,6 +9,7 @@ import { Nav, Alert } from '../components';
 export default App;
 
 function App({ Component, pageProps }) {
+
     
 
     return (
@@ -16,10 +17,10 @@ function App({ Component, pageProps }) {
             <div className={`app-container ${user ? 'bg-light' : ''}`}>
                 <Nav />
                 <Alert />
-                {/* {authorized &&
+
+
                     <Component {...pageProps} />
-                }  */}
-                <Component {...pageProps} />
+            
             </div>
 
         </>

@@ -1,7 +1,7 @@
-const fs = require('fs');
-
+// const fs = require('fs');
+let users = require('../../data/users.json');
 // users in JSON file for simplicity, store in a db for production applications
-let users = require('data/users.json');
+
 
 export const usersRepo = {
     getAll: () => users,
@@ -32,6 +32,20 @@ function update(id, params) {
     const user = users.find(x => x.id.toString() === id.toString());
 
 
+    // fullname
+    user.fullname = params.fullname;
+    //address1
+    user.address1 = params.address1;
+    //address2
+    user.address2 = params.address2;
+    //city
+    user.city = params.city;
+    //state
+    user.state = params.state;
+    //zipcode
+    user.zipcode = params.zipcode;
+
+
     // set date updated
     user.dateUpdated = new Date().toISOString();
 
@@ -40,7 +54,7 @@ function update(id, params) {
     saveData();
 }
 //figure this out manasa
-function sale(id, params){
+function sale(id, params) {
     const user = users.find(x => x.id.toString() === id.toString());
     // set sale data into db 
     user.sale = user.sale.append(params);
@@ -56,7 +70,7 @@ function _delete(id) {
     // filter out deleted user and save
     users = users.filter(x => x.id.toString() !== id.toString());
     saveData();
-    
+
 }
 
 // private helper functions
